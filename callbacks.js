@@ -59,4 +59,4 @@ function createPostCallBack(post, callback) {
 //createPost({ title: 'Post Four', body: 'Post Four' })
 
 // have to use a callback
-createPostCallBack({ title: 'Post Four', body: 'Post Five' }, getPosts)
+createPostCallBack({ title: 'Post Five', body: 'Post Five' }, getPosts)

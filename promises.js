@@ -38,11 +38,41 @@ function getPostsES6() {
   }, 1000);
 }
 
+  //using callbacks
+  // function createPostCallBack(post, callback) {
+  //   setTimeout(() => {
+  //     posts.push(post)
+  //     callback();
+  //   }, 2000);
+  // }
+
+
 // using promises
 function createPostPromise(post) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      posts.push(post)
+      posts.push(post);
+      // error checking here
+      const error = false;
+      if (!error) {
+        resolve();
+      } else {
+        reject('Error: Something went wrong');
+      }
     }, 2000);
   })
 }
+
+// promises replace the callback with .then syntax
+createPostPromise({ title: 'Post Six', body: 'Post Six' }) //once the promise resolves, then it will call get posts
+  .then(getPostsES6)//using .then inthe promise, call getPostsES6 function
+  .catch(error => console.log(error)) //use .catch to get the error. (change const error to true to see funcitonality)
+
+
+  //Async / Await 
+// async function init() {
+//   await createPostPromise({ title: 'Post Six', body: 'Post Six' });
+//   getPosts();
+// }
+  
+// init();
